@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Pagepinjam;
+use App\Models\pinjaman;
 use Illuminate\Http\Request;
 
-class PagepinjamController extends Controller
+class PinjamanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,11 +13,12 @@ class PagepinjamController extends Controller
      */
     public function index()
     {
-        $pagepinjams = Pagepinjam::orderBy('created_at', 'desc')->get();
-
-        return view('pagepinjams.index', compact('pagepinjams'))
-            ->with('i', (request()->input('pagepinjams', 1) - 1) * 5);
+        $pinjamans = Pinjaman::latest()->paginate(5);
+      
+        return view('pinjamans.index',compact('pinjamans'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+  
 
     /**
      * Show the form for creating a new resource.
@@ -26,7 +27,7 @@ class PagepinjamController extends Controller
      */
     public function create()
     {
-        return view('pagepinjams.create');
+        return view('pinjamans.create');
     }
 
     /**
@@ -46,11 +47,11 @@ class PagepinjamController extends Controller
             'return_date' => 'required',
             'teacher' => 'required'
         ]);
-
-        Pagepinjam::create($request->all());
-
-        return redirect()->route('pagepinjams.index')
-            ->with('success', 'Berhasil Menyimpan !');
+      
+        Pinjaman::create($request->all());
+       
+        return redirect()->route('pinjamans.index')
+                        ->with('success','Pinjaman created successfully.');
     }
 
     /**
@@ -59,9 +60,9 @@ class PagepinjamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(pinjaman $pinjaman)
     {
-        //
+        return view('pinjamans.show',compact('pinjaman'));
     }
 
     /**
@@ -70,9 +71,9 @@ class PagepinjamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(pagepinjam $pagepinjam)
+    public function edit(pinjaman $pinjaman)
     {
-        return view('pagepinjams.edit', compact('pagepinjam'));
+        return view('pinjamans.edit',compact('pinjaman'));
     }
 
     /**
@@ -82,7 +83,7 @@ class PagepinjamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,pagepinjam $pagepinjam)
+    public function update(Request  $request, Pinjaman $pinjaman)
     {
         $request->validate([
             'name' => 'required',
@@ -93,20 +94,11 @@ class PagepinjamController extends Controller
             'return_date' => 'required',
             'teacher' => 'required'
         ]);
-
-        // $pagepinjam = Pagepinjam::find($id);
-
-        // $pagepinjam->name = $request->name;
-        // $pagepinjam->region = $request->region;
-        // $pagepinjam->purproses = $request->purproses;
-        // $pagepinjam->ket = $request->ket;
-        // $pagepinjam->date =$request->date;
-        // $pagepinjam->return_date =$request->return_date;
-        // $pagepinjam->teacher =$request->teacher;
-        // $pagepinjam->save();
-
-        return redirect()->route('pagepinjams.index')
-            ->with('success', 'Berhasil Di Edit !');
+      
+        $pinjaman->update($request->all());
+      
+        return redirect()->route('pinjamans.index')
+                        ->with('success','Pinjaman updated successfully');
     }
     /**
      * Remove the specified resource from storage.
@@ -114,11 +106,11 @@ class PagepinjamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pagepinjam $pagepinjam)
+    public function destroy(pinjaman $pinjaman)
     {
-        $pagepinjam->delete();
+        $pinjaman->delete();
        
-        return redirect()->route('pagepinjams.index')
+        return redirect()->route('pinjamans.index')
                         ->with('success','Pinjaman deleted successfully');
     }
 }

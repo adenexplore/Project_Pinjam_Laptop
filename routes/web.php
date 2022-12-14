@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\pagepinjaController;
+use App\Http\Controllers\PagepinjamController;
+use App\Http\Controllers\PinjamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::resource('pagepinjams', PagepinjamController::class);
+Route::resource('pinjamans', pinjamanController::class);

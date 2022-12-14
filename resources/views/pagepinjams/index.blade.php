@@ -8,7 +8,7 @@
                 <h2>Page Pinjam</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('pagepinjam.create') }}">Tambah Pinjam</a>
+                <a class="btn btn-success" href="{{ route('pagepinjams.create') }}">Tambah Pinjam</a>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
                             <th width="112px">ACTION</th>
                         </tr>
                     </thead>
-                    {{-- <tbody>
+                    <tbody>
                         @foreach ($pagepinjams as $pagepinjam)
                             <tr>
                                 <td>{{ ++$i }}</td>
@@ -48,14 +48,14 @@
                                 <td>{{ $pagepinjam->purproses }}</td>
                                 <td>{{ $pagepinjam->ket }}</td>
                                 <td>{{ $pagepinjam->date }}</td>
-                                <td>{{ $pagepinjam->return }}</td>
+                                <td  style="color:red;">{{ $pagepinjam->return_date }}</td>
                                 <td>{{ $pagepinjam->teacher }}</td>
                                 <td>
-                                    <form action="{{ route('pagepinjam.destroy',$pagepinjam->id) }}" method="POST">
-                                        <a class="btn btn-primary" href="{{ route('pagepinjam.edit',$pagepinjam->id) }}">
+                                    <form action="{{ route('pagepinjams.destroy',$pagepinjam->id) }}" method="POST">
+                                        <a class="btn btn-primary" href="{{ route('pagepinjams.edit',$pagepinjam->id) }}">
                                             <i class="fa-solid fa-pen"></i>
                                         </a>
-                                
+                                        @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">
                                             <i class="fa-solid fa-trash-can"></i>
@@ -64,7 +64,7 @@
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>

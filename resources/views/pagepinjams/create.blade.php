@@ -6,7 +6,7 @@
             <h2>Tambah Pinjam</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('pagepinjam.index') }}">Kembali</a>
+            <a class="btn btn-primary" href="{{ route('pagepinjams.index') }}">Kembali</a>
         </div>
     </div>
 </div>
@@ -24,7 +24,7 @@
 </div>
 @endif
 
-<form action="{{ route('pagepinjam.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('pagepinjams.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <div class="row">
@@ -62,13 +62,13 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Date</strong>
-                <input type="date" name="date" class="form-control" placeholder="Date">
+                <input type="text" name="date" class="form-control" placeholder="Date">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Return Date</strong>
-                <input type="date" name="return_date" class="form-control" placeholder="return date">
+                <input type="text" name="return_date" class="form-control" placeholder="return date">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

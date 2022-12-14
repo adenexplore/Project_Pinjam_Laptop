@@ -21,9 +21,11 @@
 </head>
 
 <body id="page-top">
-    <main class="py-5">
-        @yield('content')
-    </main>
+    <div class="container">   
+        <main class="py-5">
+            @yield('content')
+        </main>
+    </div>
 
  <!-- Bootstrap core JavaScript-->
  <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
