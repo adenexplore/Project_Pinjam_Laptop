@@ -82,7 +82,7 @@ class PagepinjamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,pagepinjam $pagepinjam)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
@@ -94,16 +94,18 @@ class PagepinjamController extends Controller
             'teacher' => 'required'
         ]);
 
-        // $pagepinjam = Pagepinjam::find($id);
+        $pagepinjam = Pagepinjam::find($id);
 
-        // $pagepinjam->name = $request->name;
-        // $pagepinjam->region = $request->region;
-        // $pagepinjam->purproses = $request->purproses;
-        // $pagepinjam->ket = $request->ket;
-        // $pagepinjam->date =$request->date;
-        // $pagepinjam->return_date =$request->return_date;
-        // $pagepinjam->teacher =$request->teacher;
-        // $pagepinjam->save();
+        $pagepinjam->name = $request->name;
+        $pagepinjam->region = $request->region;
+        $pagepinjam->purproses = $request->purproses;
+        $pagepinjam->ket = $request->ket;
+        $pagepinjam->date =$request->date;
+        $pagepinjam->return_date =$request->return_date;
+        $pagepinjam->teacher =$request->teacher;
+        $pagepinjam->save();
+
+        // pagepinjam::create($request->all());
 
         return redirect()->route('pagepinjams.index')
             ->with('success', 'Berhasil Di Edit !');

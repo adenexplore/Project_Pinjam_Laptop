@@ -1,12 +1,13 @@
 @extends('layouts.master')
 @section('content')
+
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
             <h2>Edit Pinjam</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('pagepinjam.index') }}">Kembali</a>
+            <a class="btn btn-primary" href="{{ route('pagepinjams.index') }}">Kembali</a>
         </div>
     </div>
 </div>
@@ -24,14 +25,15 @@
 </div>
 @endif
 
-<form action="{{ route('pagepinjam.update') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('pagepinjams.update', $pagepinjam->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
+    @method('PUT')
 
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name</strong>
-                <input type="text" name="name" class="form-control" placeholder="name" value="{{$pagepinjam->name>}}">
+                <input type="text" name="name" class="form-control" placeholder="name" value="{{$pagepinjam->name}}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -39,11 +41,10 @@
                 <strong>Region</strong>
                 <br>
                 <select class="form-control" name="region" aria-label="Default select example" id="">
-                    <option value=""> -- Pilih Region -- </option>
-                    <option value="Cibedug 1" @if ($pagepinjam->region == 'Cibedug 1') selected @endif>Cibedug 1</option>
-                    <option value="Cibedug 2" @if ($pagepinjam->region == 'Cibedug 2') selected @endif>Cibedug 2</option>
-                    <option value="cibedug 3" @if ($pagepinjam->region == 'Cibedug 3') selected @endif>Cibedug 3</option>
-                    <option value="cibedug 4" @if ($pagepinjam->region == 'Cibedug 4') selected @endif>Cibedug 4</option>
+                        <option value=""> -- Pilih Teacher -- </option>
+                        <option value="cibedug1" @if ($pagepinjam->region == 'cibedug1') selected @endif>Cibedug 1</option>
+                        <option value="cibedug2" @if ($pagepinjam->region == 'cibedug2') selected @endif>Cibedug 2</option>
+                        <option value="cibedug3" @if ($pagepinjam->region == 'cibedug3') selected @endif>Cibedug 3</option>
                 </select>
             </div>
         </div>
