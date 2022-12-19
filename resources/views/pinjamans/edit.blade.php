@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <div class="form-group">
                         <strong>Name</strong>
-                        <input type="text" name="name" class="form-control" placeholder="name" value="{{$pinjaman->name>}}">
+                        <input type="text" name="name" class="form-control" placeholder="name" value="{{$pinjaman->name}}">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -83,8 +83,8 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center"style="padding: 10px">
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </div>
         </div>

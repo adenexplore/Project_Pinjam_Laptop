@@ -63,13 +63,13 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Date</strong>
-                <input type="date" name="date" class="form-control" placeholder="Date" value="{{$pagepinjam->date}}">
+                <input type="text" name="date" class="form-control" placeholder="Date" value="{{$pagepinjam->date}}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Return Date</strong>
-                <input type="date" name="return_date" class="form-control" placeholder="return date" value="{{$pagepinjam->return_date}}">
+                <input type="text" name="return_date" class="form-control" placeholder="return date" value="{{$pagepinjam->return_date}}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -83,8 +83,8 @@
                 </select>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center"style="padding: 10px">
+            <button type="submit" class="btn btn-primary">Update</button>
         </div>
     </div>
 
